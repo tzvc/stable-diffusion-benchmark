@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from flask import Flask, request, send_file
 import io
 import torch
