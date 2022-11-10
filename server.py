@@ -13,7 +13,7 @@ pipe = StableDiffusionPipeline.from_pretrained(
 
 def run_inference(prompt):
   with autocast("cuda"):
-      image = pipe(prompt)["sample"][0]  
+      image = pipe(prompt).images[0]  
   img_data = io.BytesIO()
   image.save(img_data, "PNG")
   img_data.seek(0)
