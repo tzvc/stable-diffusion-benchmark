@@ -15,12 +15,13 @@ WORKDIR /home/huggingface
 
 ENV USE_TORCH=1
 
-RUN chmod +x server.py
 RUN mkdir -p /home/huggingface/.cache/huggingface \
   && mkdir -p /home/huggingface/input \
   && mkdir -p /home/huggingface/output
 
 COPY server.py /usr/local/bin
 COPY token.txt /home/huggingface
+
+RUN chmod +x /usr/local/bin/server.py
 
 ENTRYPOINT [ "server.py" ]
