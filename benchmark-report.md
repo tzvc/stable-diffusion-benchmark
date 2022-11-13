@@ -127,6 +127,14 @@ Avg. time: 14915.603267490005ms
 | ------------------ | -------------------- |
 | 14915              | 1491                 |
 
+
+<br/>
+
+---
+
+<br/>
+
+
 ### A100 Machine
 
 | Provider | Name          | CPU      | GPU                  | Memory | Disk       | Cost       | Cost per gen. ($) |
