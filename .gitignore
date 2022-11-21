@@ -1,3 +1,9 @@
+# bench output
+output
+
+# secret
+token.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
