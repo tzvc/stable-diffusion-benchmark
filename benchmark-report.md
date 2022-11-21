@@ -127,6 +127,7 @@ Avg. time: 14915.603267490005ms
 | ------------------ | -------------------- |
 | 14915              | 1491                 |
 
+<<<<<<< HEAD
 ### NVIDIA v100 Machine
 
 | Provider | Name       | CPU     | GPU             | Memory | Disk       | Cost       | Cost per gen. ($) |
@@ -252,6 +253,17 @@ Avg. time: 12715.91ms
 | 12715              | 1271                 |
 
 ### NVIDIA A100 Machine
+=======
+
+<br/>
+
+---
+
+<br/>
+
+
+### A100 Machine
+>>>>>>> fc1356ad1aa5e3545b503cbbf9d01e3306553175
 
 | Provider | Name          | CPU      | GPU                  | Memory | Disk       | Cost       | Cost per gen. ($) |
 | -------- | ------------- | -------- | -------------------- | ------ | ---------- | ---------- | ----------------- |
