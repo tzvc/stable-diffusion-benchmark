@@ -2,6 +2,49 @@
 
 The following is a report of the benchmark for running stable diffusion on major cloud providers.
 
+### Run the benchmark
+
+#### Clone this repo
+
+```bash
+git clone https://github.com/tzvc/stable-diffusion-benchmark.git
+```
+
+#### Get the stable diffusion code and activate the virtual env
+
+```bash
+cd stable-diffusion
+conda env create -f environment.yaml
+conda activate ldm
+```
+
+#### Log into Hugging Face to access the model
+
+```bash
+huggingface-cli login
+```
+
+#### Install the dependencies and launch the benchmark server
+
+```bash
+cd ..
+
+# Install bench server deps
+pip install Flask
+pip install gunicorn
+
+# Launch the server
+gunicorn -b :5000 --timeout=20 server:app
+```
+
+The benchmark will be running on port 5000, replying to requests with a prompt query param with the generated image (ex. `http://<ip>:5000?prompt=an+astronaut+riding+a+horse`).
+
+You can now run set your benchmark server IP (or localhost) in the client benchmark code `bench.ts` and run the benchmark with the following command:
+
+```bash
+deno run --allow-all bench.ts
+```
+
 ### NVIDIA T4 Machine
 
 | Provider | Name                 | CPU     | GPU           | Memory | Disk       | Cost        | Cost per gen. ($) |
@@ -127,13 +170,23 @@ Avg. time: 14915.603267490005ms
 | ------------------ | -------------------- |
 | 14915              | 1491                 |
 
-<<<<<<< HEAD
+=======
+
+<br/>
+
+---
+
+<br/>
+
 ### NVIDIA v100 Machine
 
-| Provider | Name       | CPU     | GPU             | Memory | Disk       | Cost       | Cost per gen. ($) |
-| -------- | ---------- | ------- | --------------- | ------ | ---------- | ---------- | ----------------- |
-| GCP      | N/A        | N/A     | N/A             | N/A    | N/A        | N/A        | N/A               |
-| AWS      | p3.2xlarge | 8 vCPUs | 1 x NVIDIA V100 | 61 GB  | 125 GB SSD | $3.06/hour | 0.01080           |
+| Provider | Name             | CPU     | GPU             | Memory | Disk       | Cost        | Cost per gen. ($) |
+| -------- | ---------------- | ------- | --------------- | ------ | ---------- | ----------- | ----------------- |
+| GCP      | N/A              | N/A     | N/A             | N/A    | N/A        | N/A         | N/A               |
+| AWS      | p3.2xlarge       | 8 vCPUs | 1 x NVIDIA V100 | 61 GB  | 125 GB SSD | $3.06/hour  | 0.01080           |
+| Azure    | Standard_NC6s_v3 | 6       | 1 x NVIDIA V100 | 112 GB | 736 GB SSD | $3.978/hour | 0.0140            |
+
+Note: GCP doesn't offer V100 GPUs.
 
 #### Benchmark Logs
 
@@ -252,7 +305,6 @@ Avg. time: 12715.91ms
 | ------------------ | -------------------- |
 | 12715              | 1271                 |
 
-### NVIDIA A100 Machine
 =======
 
 <br/>
@@ -261,9 +313,7 @@ Avg. time: 12715.91ms
 
 <br/>
 
-
-### A100 Machine
->>>>>>> fc1356ad1aa5e3545b503cbbf9d01e3306553175
+### NVIDIA A100 Machine
 
 | Provider | Name          | CPU      | GPU                  | Memory | Disk       | Cost       | Cost per gen. ($) |
 | -------- | ------------- | -------- | -------------------- | ------ | ---------- | ---------- | ----------------- |
@@ -271,7 +321,7 @@ Avg. time: 12715.91ms
 | AWS      | N/A           | N/A      | N/A                  | N/A    | N/A        | N/A        |                   |
 | Azure    | N/A           | N/A      | N/A                  | N/A    | N/A        | N/A        |                   |
 
-Notes: AWS and Azure do not have A100 GPUs yet.
+Notes: AWS and Azure doesn't offer A100 GPUs yet.
 
 #### Benchmark Logs
 
