@@ -16,3 +16,7 @@ services:
       - huggingface:/home/huggingface/.cache/huggingface
     environment:
       - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN}
+
+volumes:
+  huggingface:
+    driver: local
