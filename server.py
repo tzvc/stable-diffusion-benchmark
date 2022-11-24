@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from flask import Flask, request, send_file
+from flask_cors import CORS
 import io
 import os
 import torch
@@ -7,6 +8,8 @@ from torch import autocast
 from diffusers import StableDiffusionPipeline
 
 app = Flask(__name__)
+CORS(app)
+
 assert torch.cuda.is_available()
 pipe = StableDiffusionPipeline.from_pretrained(
     "CompVis/stable-diffusion-v1-4",
