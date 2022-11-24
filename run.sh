@@ -10,4 +10,5 @@ docker run --rm --gpus=all \
     -v "$PWD"/input:/home/huggingface/input \
     -v "$PWD"/output:/home/huggingface/output \
     -e HUGGINGFACE_TOKEN=$HUGGINGFACE_TOKEN \
+    -p 5000:5000 \
     -it $1
