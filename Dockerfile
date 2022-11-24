@@ -21,4 +21,6 @@ RUN mkdir -p /home/huggingface/.cache/huggingface \
 
 COPY server.py /usr/local/bin
 
+EXPOSE 5000
+
 CMD ["gunicorn"  , "-b", ":5000", "server:app"]
