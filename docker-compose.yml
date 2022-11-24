@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    command: nvidia-smi
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    ports:
+      - "5000:5000"
+    volumes:
+      - huggingface:/home/huggingface/.cache/huggingface
+    environment:
+      - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN}
