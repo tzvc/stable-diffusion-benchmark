@@ -21,4 +21,4 @@ COPY server.py /usr/local/bin
 
 EXPOSE 5000
 
-CMD ["gunicorn"  , "-b", ":5000", "server:app"]
+CMD ["gunicorn" , "-b", ":5000", "-t", "3600", "server:app"]
