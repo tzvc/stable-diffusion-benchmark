@@ -2,7 +2,16 @@
 
 The following is a report of the benchmark for running stable diffusion on major cloud providers.
 
-### Run the benchmark
+### Run the benchmark (using Docker)
+
+A Dockerfile and docker-compose.yml configuration files are provided to setup the benchmark in minutes.
+
+Make sure you have the `HUGGINGFACE_TOKEN` env variable to your current env then run:
+```bash
+docker compose up
+```
+
+### Run the benchmark (bare metal)
 
 #### Clone this repo
 
